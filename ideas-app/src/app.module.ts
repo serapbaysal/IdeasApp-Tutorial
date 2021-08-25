@@ -9,12 +9,17 @@ import { IdeaService } from './idea/idea.service';
 import { Repository } from 'typeorm';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpErrorFilter } from './shared/http-error.filter';
+import { UserController } from './user/user.controller';
+import { UserModule } from './user/user.module';
+import { UserService } from './user/user.service';
+import { UserEntity } from './user/user.entity';
+
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot(),TypeOrmModule.forFeature([IdeaEntity])],
-  controllers: [AppController, IdeaController],
-  providers: [AppService,IdeaService, {
+  imports: [TypeOrmModule.forRoot(),TypeOrmModule.forFeature([IdeaEntity]), TypeOrmModule.forFeature([UserEntity])],
+  controllers: [AppController, IdeaController, UserController],
+  providers: [AppService,IdeaService,UserService, {
     provide: APP_FILTER,
     useClass:HttpErrorFilter
   }],

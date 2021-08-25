@@ -3,7 +3,7 @@ import { get } from 'http';
 import { IdeaDTO } from './idea.dto';
 import { IdeaService } from './idea.service';
 
-@Controller('idea')
+@Controller('api/idea')
 export class IdeaController {
 
     private logger = new Logger('IdeaController');
